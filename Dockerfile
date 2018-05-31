@@ -32,7 +32,8 @@ RUN chgrp -Rf root /home/$NB_USER && chmod -Rf g+w /home/$NB_USER
 
 # Adjust permissions on /etc/passwd so writable by group root.
 
-RUN chmod g+w /etc/passwd
+RUN chmod g+w /etc/passwd \
+    && /bin/bash /opt/app-root/s2i/bin/assemble
 
 # Revert the user but set it to be an integer user ID else the S2I build
 # process will reject the builder image as can't tell if user name
@@ -42,5 +43,4 @@ USER 1000
 
 # Override command to startup Jupyter notebook. The original is wrapped
 # so we can set an environment variable for notebook password.
-CMD [ "/opt/app-root/s2i/bin/assemble" ]
-CMD [ "/opt/app-root/s2i/bin/run" ]
+ENTRYPOINT [ "/opt/app-root/s2i/bin/run" ]
