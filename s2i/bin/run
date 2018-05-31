@@ -1,7 +1,5 @@
 #!/bin/bash
 
-NB_USER="quant"
-
 set -eo pipefail
 
 NOTEBOOK_ARGS=

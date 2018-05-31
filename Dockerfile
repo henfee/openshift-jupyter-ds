@@ -33,7 +33,9 @@ RUN chgrp -Rf root /home/$NB_USER && chmod -Rf g+w /home/$NB_USER
 # Adjust permissions on /etc/passwd so writable by group root.
 
 RUN chmod g+w /etc/passwd \
-    && /bin/bash /opt/app-root/s2i/bin/assemble
+    && conda install -c spacy spacy \
+    && conda install gensim nltk plotly scikit-learn seaborn statsmodels \
+    && pip install catboost
 
 # Revert the user but set it to be an integer user ID else the S2I build
 # process will reject the builder image as can't tell if user name
