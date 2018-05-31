@@ -1,0 +1,28 @@
+{
+    "kind": "ImageStream",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "openshift-jupyter-ds",
+        "annotations": {
+            "openshift.io/display-name": "Jupyter Notebook Server"
+        }
+    },
+    "spec": {
+        "tags": [
+            {
+                "name": "latest",
+                "annotations": {
+                    "openshift.io/display-name": "Jupyter Notebook Server",
+                    "description": "Build and deploy a custom Jupyter Notebooks image with pre-bundled scientific Python packages.",
+                    "iconClass": "icon-python",
+                    "tags": "builder,python",
+                    "version": "latest"
+                },
+                "from": {
+                    "kind": "DockerImage",
+                    "name": "valiantone/openshift-jupyter-ds:latest"
+                }
+            }
+        ]
+    }
+}
